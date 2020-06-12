@@ -59,15 +59,17 @@ function runBacktrack(board) {
                     document.getElementById((i + 1).toString().concat((j + 1).toString())).value = k;
                     if (checkValid(i, j, board, k)) {
                         board[i][j] = k;
-                    }
 
-                    if (runBacktrack(board)) {
-                        return true;
-                    } else {
-                        board[i][j] = 0;
+                        if (runBacktrack(board)) {
+                            return true;
+                        } else {
+                            board[i][j] = 0;
+                        }
                     }
                 }
-                return false;
+                if (board[i][j] === 0) {
+                    return false;
+                }
             }
         }
     }
